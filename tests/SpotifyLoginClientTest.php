@@ -12,6 +12,9 @@ use Spotify\Login5\V3\LoginResponse;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * Class SpotifyLoginClientTest
+ */
 class SpotifyLoginClientTest extends TestCase
 {
     /**

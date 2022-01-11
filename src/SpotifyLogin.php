@@ -163,7 +163,7 @@ class SpotifyLogin
     }
 
     /**
-     * @param \Spotify\Login5\V3\LoginOk|null $okResponse
+     * @param LoginOk|null $okResponse
      *
      * @return AccessToken|null
      */
