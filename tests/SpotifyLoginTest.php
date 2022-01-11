@@ -3,6 +3,7 @@
 namespace PouleR\SpotifyLogin\Tests;
 
 use PHPUnit\Framework\MockObject\MockObject;
+use PouleR\SpotifyLogin\Exception\SpotifyLoginException;
 use PouleR\SpotifyLogin\SpotifyLogin;
 use PHPUnit\Framework\TestCase;
 use PouleR\SpotifyLogin\SpotifyLoginClient;
@@ -37,10 +38,14 @@ class SpotifyLoginTest extends TestCase
         $this->spotifyLogin->setDeviceId('device.id');
     }
 
+    /**
+     * @return void
+     *
+     * @throws SpotifyLoginException
+     */
     public function testLogin(): void
     {
         $challenge = new Challenge();
-
         $hashCash = new HashcashChallenge();
         $hashCash
             ->setLength(10)
@@ -103,5 +108,34 @@ class SpotifyLoginTest extends TestCase
         self::assertEquals('user', $accessToken->getUsername());
         self::assertEquals('refresh', $accessToken->getRefreshToken());
         self::assertEquals('access.token', $accessToken->getAccessToken());
+    }
+
+    /**
+     * @return void
+     *
+     * @throws SpotifyLoginException
+     */
+    public function testRefreshToken(): void
+    {
+        $loginResponse = $this->createMock(LoginResponse::class);
+        $loginResponse->expects(self::once())
+            ->method('getOk')
+            ->willReturn(null);
+
+        $this->loginClient->expects(self::once())
+            ->method('loginRequest')
+            ->with(
+                self::callback(function (LoginRequest $request): bool {
+                    self::assertEquals('client.id', $request->getClientInfo()->getClientId());
+                    self::assertEquals('device.id', $request->getClientInfo()->getDeviceId());
+
+                    self::assertEquals('unit', $request->getStoredCredential()->getUsername());
+                    self::assertEquals('test', $request->getStoredCredential()->getData());
+
+                    return true;
+                }))
+            ->willReturn($loginResponse);
+
+        self::assertNull($this->spotifyLogin->refreshToken('unit', 'test'));
     }
 }
