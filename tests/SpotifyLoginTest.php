@@ -92,7 +92,7 @@ class SpotifyLoginTest extends TestCase
                     $hashSolution = $request->getChallengeSolutions()->getSolutions()[0];
 
                     self::assertEquals(hex2bin('5a8888c55ae342230000000000000c0d'), $hashSolution->getHashcash()->getSuffix());
-                    self::assertGreaterThan(0, $hashSolution->getHashcash()->getDuration()->getNanos());
+                    self::assertNotEquals(0, $hashSolution->getHashcash()->getDuration()->getNanos());
 
                     return true;
                 })
