@@ -18,7 +18,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class SpotifyLoginClient
 {
     private const LOGIN_URL = 'https://login5.spotify.com/v3/login';
-
     protected HttpClientInterface $httpClient;
 
     /**
@@ -36,7 +35,7 @@ class SpotifyLoginClient
      *
      * @throws SpotifyLoginException
      */
-    public function loginRequest(LoginRequest $loginRequest)
+    public function loginRequest(LoginRequest $loginRequest): LoginResponse
     {
         $headers[] = 'Content-Type: application/x-protobuf';
 
