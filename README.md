@@ -43,3 +43,6 @@ $token = $spotifyLogin->login('email@address.com','password');
 
 // Refresh token
 $newToken = $spotifyLogin->refreshToken($token->getUsername(), $token->getRefreshToken());
+
+print_r($newToken);
+```
