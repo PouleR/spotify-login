@@ -11,7 +11,7 @@ use PouleR\SpotifyLogin\Util\HexUtils;
  */
 class ChallengeSolver
 {
-    private const MAX_ITERATIONS = 7500;
+    private const MAX_ITERATIONS = 5000;
 
     /**
      * @param string $loginContext
