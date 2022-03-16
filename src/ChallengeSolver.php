@@ -11,7 +11,7 @@ use PouleR\SpotifyLogin\Util\HexUtils;
  */
 class ChallengeSolver
 {
-    private const MAX_ITERATIONS = 5000;
+    private const MAX_ITERATIONS = 7500;
 
     /**
      * @param string $loginContext
@@ -56,6 +56,10 @@ class ChallengeSolver
      */
     private function countTrailingZero(int $x): int
     {
+        if ($x === 0) {
+            return 32;
+        }
+
         $count = 0;
         while (($x & 1) == 0) {
             $x = $x >> 1;
