@@ -22,7 +22,8 @@ class AccessTokenTest extends TestCase
             ->setUsername('username')
             ->setAccessToken('access.token')
             ->setExpiresIn(1800)
-            ->setRefreshToken('refresh.token');
+            ->setRefreshToken('refresh.token')
+        ;
     }
 
     /**

@@ -25,7 +25,7 @@ class AccessToken
      *
      * @return AccessToken
      */
-    public function setAccessToken(string $accessToken)
+    public function setAccessToken(string $accessToken): static
     {
         $this->accessToken = $accessToken;
 
@@ -45,7 +45,7 @@ class AccessToken
      *
      * @return AccessToken
      */
-    public function setExpiresIn(int $expiresIn): AccessToken
+    public function setExpiresIn(int $expiresIn): static
     {
         $this->expiresIn = $expiresIn;
 
@@ -65,7 +65,7 @@ class AccessToken
      *
      * @return AccessToken
      */
-    public function setRefreshToken(string $refreshToken): AccessToken
+    public function setRefreshToken(string $refreshToken): static
     {
         $this->refreshToken = $refreshToken;
 
@@ -85,7 +85,7 @@ class AccessToken
      *
      * @return AccessToken
      */
-    public function setUsername(string $username): AccessToken
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 

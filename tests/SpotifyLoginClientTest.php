@@ -17,10 +17,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  */
 class SpotifyLoginClientTest extends TestCase
 {
-    /**
-     * @var MockObject|HttpClientInterface
-     */
-    private $client;
+    private HttpClientInterface|MockObject $client;
     private SpotifyLoginClient $loginClient;
 
     /**

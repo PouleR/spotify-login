@@ -18,14 +18,12 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class SpotifyLoginClient
 {
     private const LOGIN_URL = 'https://login5.spotify.com/v3/login';
-    protected HttpClientInterface $httpClient;
 
     /**
      * @param HttpClientInterface $httpClient
      */
-    public function __construct(HttpClientInterface $httpClient)
+    public function __construct(protected HttpClientInterface $httpClient)
     {
-        $this->httpClient = $httpClient;
     }
 
     /**

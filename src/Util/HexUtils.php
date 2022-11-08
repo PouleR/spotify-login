@@ -27,7 +27,7 @@ class HexUtils
      */
     public static function byteArray2Hex(array $byteArray): string
     {
-        $chars = array_map("chr", $byteArray);
+        $chars = array_map('chr', $byteArray);
         $bin = join($chars);
 
         return bin2hex($bin);

@@ -28,18 +28,12 @@ class SpotifyLogin
     private string $clientId = '';
     private string $deviceId = '';
 
-    protected SpotifyLoginClient $client;
-    protected ?LoggerInterface $logger = null;
-
     /**
      * @param SpotifyLoginClient   $client
      * @param LoggerInterface|null $logger
      */
-    public function __construct(SpotifyLoginClient $client, ?LoggerInterface $logger = null)
+    public function __construct(protected SpotifyLoginClient $client, protected ?LoggerInterface $logger = null)
     {
-        $this->client = $client;
-        $this->logger = $logger;
-
         if (!$this->logger) {
             $this->logger = new NullLogger();
         }
@@ -150,7 +144,8 @@ class SpotifyLogin
         $duration = new Duration();
         $duration
             ->setNanos(($solvedChallenge->getDuration() % 1000000000))
-            ->setSeconds((int)($solvedChallenge->getDuration() / 1000000000));
+            ->setSeconds((int)($solvedChallenge->getDuration() / 1000000000))
+        ;
         $hashCashSolution->setDuration($duration);
 
         $challengeSolution = new ChallengeSolution();
@@ -179,6 +174,7 @@ class SpotifyLogin
             ->setAccessToken($okResponse->getAccessToken())
             ->setExpiresIn($okResponse->getAccessTokenExpiresIn())
             ->setRefreshToken($okResponse->getStoredCredential())
-            ->setUsername($okResponse->getUsername());
+            ->setUsername($okResponse->getUsername())
+        ;
     }
 }

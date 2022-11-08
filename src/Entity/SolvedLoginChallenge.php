@@ -7,20 +7,14 @@ namespace PouleR\SpotifyLogin\Entity;
  */
 class SolvedLoginChallenge
 {
-    private array $suffix;
-    private int $iterations;
     private int $duration;
 
     /**
-     * SolvedLoginChallenge constructor.
-     *
      * @param array $suffix
      * @param int   $iterations
      */
-    public function __construct(array $suffix, int $iterations)
+    public function __construct(private readonly array $suffix, private readonly int $iterations)
     {
-        $this->suffix = $suffix;
-        $this->iterations = $iterations;
     }
 
     /**

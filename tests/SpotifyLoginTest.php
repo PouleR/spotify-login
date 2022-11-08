@@ -20,10 +20,7 @@ use Spotify\Login5\V3\LoginResponse;
  */
 class SpotifyLoginTest extends TestCase
 {
-    /**
-     * @var MockObject|SpotifyLoginClient
-     */
-    private $loginClient;
+    private SpotifyLoginClient|MockObject $loginClient;
     private SpotifyLogin $spotifyLogin;
 
     /**
